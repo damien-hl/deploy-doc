@@ -1,0 +1,22 @@
+{
+  "name": "deploy-doc",
+  "version": "0.0.1",
+  "description": "Guide de mise en production d'une application Spring Boot et Angular",
+  "main": "index.js",
+  "authors": {
+    "name": "Damien Heulin",
+    "email": "damienheulin87@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/npm/cli.git"
+  },
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.5.4"
+  }
+}
