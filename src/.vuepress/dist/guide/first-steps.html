@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Premiers pas | Mise en production</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    
+    <meta name="description" content="Guide de mise en production d'une application Spring Boot et Angular sur un VPS">
+    <meta name="theme-color" content="#CC444B">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="preload" href="/assets/css/0.styles.36fb72c9.css" as="style"><link rel="preload" href="/assets/js/app.07fafe59.js" as="script"><link rel="preload" href="/assets/js/2.5ef10a7e.js" as="script"><link rel="preload" href="/assets/js/4.6cf30971.js" as="script"><link rel="prefetch" href="/assets/js/10.24ecb1ac.js"><link rel="prefetch" href="/assets/js/11.5cd70b17.js"><link rel="prefetch" href="/assets/js/3.f0b635c1.js"><link rel="prefetch" href="/assets/js/5.7e5903b4.js"><link rel="prefetch" href="/assets/js/6.bc091efc.js"><link rel="prefetch" href="/assets/js/7.18ac5efb.js"><link rel="prefetch" href="/assets/js/8.d0d93153.js"><link rel="prefetch" href="/assets/js/9.99b30cec.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.36fb72c9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Mise en production</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">
+  Guide
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">
+  Guide
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Guide</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/" aria-current="page" class="sidebar-link">Introduction</a></li><li><a href="/guide/first-steps.html" aria-current="page" class="active sidebar-link">Premiers pas</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/first-steps.html#connexion-et-mise-a-jour" class="sidebar-link">Connexion et mise à jour</a></li></ul></li><li><a href="/guide/security.html" class="sidebar-link">Sécurité</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="premiers-pas"><a href="#premiers-pas" class="header-anchor">#</a> Premiers pas</h1> <h2 id="connexion-et-mise-a-jour"><a href="#connexion-et-mise-a-jour" class="header-anchor">#</a> Connexion et mise à jour</h2> <p>Commençons par nous connecter au serveur, pour cela ouvrez votre terminal et tapez la commande suivante :</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">ssh</span> <span class="token operator">&lt;</span>utilisateur<span class="token operator">&gt;</span>@<span class="token operator">&lt;</span>IP_du_serveur<span class="token operator">&gt;</span> -p <span class="token number">22</span>
+</code></pre></div><p>Entrez <code>yes</code> pour indiquer que vous souhaitez continuer la connexion (Figure 1).</p> <p><img src="/assets/img/connect.90ecb3a2.jpg" alt="Connexion au serveur via SSH"> <em>Figure 1: Connexion au serveur via SSH</em></p> <p>Passons en super utilisateur root (vous devrez entrer votre mot de passe) (Figure 2)</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">su</span>
+</code></pre></div><p><img src="/assets/img/root.b68b07f5.jpg" alt="Invite de commande en tant que root"> <em>Figure 2: Invite de commande en tant que root</em></p> <p>Mettons à jour les paquets du serveur</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">apt</span> update
+<span class="token function">apt</span> upgrade
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/guide/" class="prev router-link-active">
+        Introduction
+      </a></span> <span class="next"><a href="/guide/security.html">
+        Sécurité
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.07fafe59.js" defer></script><script src="/assets/js/2.5ef10a7e.js" defer></script><script src="/assets/js/4.6cf30971.js" defer></script>
+  </body>
+</html>
