@@ -8,6 +8,8 @@ module.exports = {
      */
     description: 'Guide de mise en production d\'une application Spring Boot et Angular sur un VPS',
 
+    base: '/deploy-doc/',
+
     locales: {
         "/": {
             lang: "fr-FR"
