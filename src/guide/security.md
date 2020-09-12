@@ -130,6 +130,11 @@ ufw allow 80/tcp
 ufw allow 443/tcp
 ```
 
+Autorisez l’accès au port du projet back (port 8081 pour l'exemple)
+``` bash
+ufw allow 8081/tcp
+```
+
 Activez le pare feu
 ``` bash
 ufw enable

@@ -52,6 +52,8 @@ module.exports = {
                         'first-steps',
                         'security',
                         'web-server',
+                        'database',
+                        'java',
                         'app-upload',
                     ]
                 }
