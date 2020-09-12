@@ -9,7 +9,7 @@ mysqldump -u <nom_utilisateur_bbd> -p <nom_de_la_bdd> > seed.sql
 
 Cela va vous créer un fichier `seed.sql` dans le répertoire où vous vous trouver (Figure 1)
 
-![Sauvegarde de la base de données locale](./save_database.jpg)
+![Sauvegarde de la base de données locale](src/guide/images/save_database.jpg)
 *Figure 1 : Sauvegarde de la base de données locale*
 
 Envoyez ce fichier sur votre serveur, dans le dossier de l'utilisateur `~/` avec FileZilla ou SCP.
@@ -40,10 +40,10 @@ Remove test database and access to it? Yes
 Reload privilege table now? Yes
 ```
 
-![Série de questions](./secure_mysql_1.jpg)
+![Série de questions](src/guide/images/secure_mysql_1.jpg)
 *Figure 2 : Série de questions*
 
-![Série de questions](./secure_mysql_2.jpg)
+![Série de questions](src/guide/images/secure_mysql_2.jpg)
 *Figure 3 : Série de questions*
 
 ## Configuration de MySQL Server
@@ -68,10 +68,10 @@ Accordez toutes les permissions sur la base de données à votre utilisateur (Fi
 GRANT ALL PRIVILEGES ON <nom_de_la_base>.* TO 'nom_utilisateur_bbd'@'localhost' IDENTIFIED BY 'password_utilisateur_bbd';
 ```
 
-![Création d'un utilisateur](./config_mysql.jpg)
+![Création d'un utilisateur](./images/config_mysql.jpg)
 *Figure 4 : Création d'un utilisateur*
 
-Quittez la session MySQL et reconnectez-vous avec l'utilisateur nouvellement 
+Quittez la session MySQL et reconnectez-vous avec l'utilisateur nouvellement crée
 ``` bash
 mysql -u <nom_utilisateur_bbd> -p
 ```
@@ -81,7 +81,14 @@ Affichez les bases de données accessible par cet utilisateur (Figure 5)
 SHOW DATABASES;
 ```
 
-![Bases de données accessibles par cet utilisateur](./login_mysql.jpg)
+![Bases de données accessibles par cet utilisateur](./images/login_mysql.jpg)
 *Figure 5 : Bases de données accessibles par cet utilisateur*
 
 Vous pouvez à présent quittez cette session MySQl.
+
+## Restauration de la base de données sauvegardée   
+ 
+Pour restaurer votre sauvegarde MySQL, placez-vous dans le dossier où se trouve votre sauvegarde et exécuter la commande suivante
+``` bash
+mysql -u <nom_utilisateur_bbd> -p <nom_de_la_base> < seed.sql
+```

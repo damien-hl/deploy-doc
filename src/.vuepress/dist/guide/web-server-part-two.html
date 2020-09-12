@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Serveur Web Apache - Partie 2 | Mise en production</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    
+    <meta name="description" content="Guide de mise en production d'une application Spring Boot et Angular sur un VPS">
+    <meta name="theme-color" content="#CC444B">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="preload" href="/assets/css/0.styles.95b730f6.css" as="style"><link rel="preload" href="/assets/js/app.39a297a1.js" as="script"><link rel="preload" href="/assets/js/2.d9ae6553.js" as="script"><link rel="preload" href="/assets/js/10.c59cd745.js" as="script"><link rel="prefetch" href="/assets/js/11.230735fe.js"><link rel="prefetch" href="/assets/js/12.66885306.js"><link rel="prefetch" href="/assets/js/13.80b91e58.js"><link rel="prefetch" href="/assets/js/14.f66f6672.js"><link rel="prefetch" href="/assets/js/15.4282239f.js"><link rel="prefetch" href="/assets/js/3.81568f7d.js"><link rel="prefetch" href="/assets/js/4.a7915040.js"><link rel="prefetch" href="/assets/js/5.83f26f6d.js"><link rel="prefetch" href="/assets/js/6.d47fba61.js"><link rel="prefetch" href="/assets/js/7.1911ca3b.js"><link rel="prefetch" href="/assets/js/8.c0045156.js"><link rel="prefetch" href="/assets/js/9.1327603b.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.95b730f6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Mise en production</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">
+  Guide
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">
+  Guide
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Guide</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/" aria-current="page" class="sidebar-link">Introduction</a></li><li><a href="/guide/first-steps.html" class="sidebar-link">Premiers pas</a></li><li><a href="/guide/security.html" class="sidebar-link">Sécurité</a></li><li><a href="/guide/web-server-part-one.html" class="sidebar-link">Serveur Web Apache - Partie 1</a></li><li><a href="/guide/database.html" class="sidebar-link">Base de données MySQL</a></li><li><a href="/guide/java-part-one.html" class="sidebar-link">Java - Partie 1</a></li><li><a href="/guide/app-upload.html" class="sidebar-link">Upload de l'application</a></li><li><a href="/guide/web-server-part-two.html" aria-current="page" class="active sidebar-link">Serveur Web Apache - Partie 2</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/web-server-part-two.html#configuration-d-apache" class="sidebar-link">Configuration d'Apache</a></li></ul></li><li><a href="/guide/java-part-two.html" class="sidebar-link">Java - Partie 2</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="serveur-web-apache-partie-2"><a href="#serveur-web-apache-partie-2" class="header-anchor">#</a> Serveur Web Apache - Partie 2</h1> <h2 id="configuration-d-apache"><a href="#configuration-d-apache" class="header-anchor">#</a> Configuration d'Apache</h2> <p>Avant de configurer spécifiquement le projet, il est nécessaire d'effectuer quelques modifications à la configuration d'Apache.</p> <p>Tout d'abord, sur votre serveur, passez en super utilisateur <code>root</code> et activez le module <code>rewrite</code> d'Apache :</p> <div class="language-bash extra-class"><pre class="language-bash"><code>a2enmod rewrite
+</code></pre></div><p>Ajoutez maintenant le dossier <code>/home/&lt;nom_utilisateur&gt;/www</code> dans la liste des dossiers gérés par Apache (Figure 2)
+Pour cela, ouvrez le fichier <code>/etc/apache2/apache2.conf</code> et modifiez les lignes indiquées :</p> <div class="language-bash extra-class"><div class="highlight-lines"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><br><br><br><br><br><br><br></div><pre class="language-bash"><code><span class="token comment"># Sets the default security model of the Apache2 HTTPD server. It does</span>
+<span class="token comment"># not allow access to the root filesystem outside of /usr/share and /var/www.</span>
+<span class="token comment"># The former is used by web applications packaged in Debian,</span>
+<span class="token comment"># the latter may be used for local directories served by the web server. If</span>
+<span class="token comment"># your system is serving content from a sub-directory in /srv you must allow</span>
+<span class="token comment"># access here, or in any related virtual host.</span>
+<span class="token operator">&lt;</span>Directory /<span class="token operator">&gt;</span>
+        Options FollowSymLinks
+        AllowOverride None
+        Require all denied
+<span class="token operator">&lt;</span>/Directory<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span>Directory /usr/share<span class="token operator">&gt;</span>
+        AllowOverride None
+        Require all granted
+<span class="token operator">&lt;</span>/Directory<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span>Directory /var/www/<span class="token operator">&gt;</span>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+<span class="token operator">&lt;</span>/Directory<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span>Directory /home/<span class="token operator">&lt;</span>nom_utilisateur<span class="token operator">&gt;</span>/www/<span class="token operator">&gt;</span>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+<span class="token operator">&lt;</span>/Directory<span class="token operator">&gt;</span>
+
+<span class="token comment">#&lt;Directory /srv/&gt;</span>
+<span class="token comment">#       Options Indexes FollowSymLinks</span>
+<span class="token comment">#       AllowOverride None</span>
+<span class="token comment">#       Require all granted</span>
+<span class="token comment">#&lt;/Directory&gt;</span>
+</code></pre></div><p><img src="/assets/img/apache_folders.49377df1.jpg" alt="Liste des dossiers gérés par Apache"> <em>Figure 2 : Liste des dossiers gérés par Apache</em></p> <p>Redémarrez le service Apache</p> <div class="language-bash extra-class"><pre class="language-bash"><code>systemctl restart apache2
+</code></pre></div><p>Vous allez maintenant créer un virtual host pour votre projet.</p> <p>Copiez la configuration du site par défaut d'Apache, nommez-la <code>001-&lt;nom_du_projet&gt;</code></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">cp</span> /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/001-<span class="token operator">&lt;</span>nom_du_projet<span class="token operator">&gt;</span>.conf
+</code></pre></div><p>Éditez ce fichier avec nano</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">nano</span> /etc/apache2/sites-available/001-<span class="token operator">&lt;</span>nom_du_projet<span class="token operator">&gt;</span>.conf
+</code></pre></div><p>Modifiez-le comme ceci (Figure 1)</p> <div class="language-markup extra-class"><pre class="language-markup"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>VirtualHost</span> <span class="token attr-name"><span class="token namespace">*:</span>80</span><span class="token punctuation">&gt;</span></span>
+        # Entrez en dessous votre nom de domaine, exemple : chantemelse.com
+        ServerName chantemelse.com 
+        # Entrez un alias qui enverra sur votre nom de domaine, exemple : www.chantemelse.com
+        ServerAlias www.chantemelse.com
+        
+        # Si vous avez une adresse email à afficher en cas de problème, entrez-la ici
+        ServerAdmin webmaster@chantemelse.com  
+        # Indiquez le dossier dans lequel se trouve votre projet front
+        DocumentRoot /home/ubuntu/www/chantemelse/front
+
+        # Réécriture d'URL pour les Single Page Application
+        RewriteEngine on
+        RewriteCond %{REQUEST_FILENAME} -s [OR]
+        RewriteCond %{REQUEST_FILENAME} -l [OR]
+        RewriteCond %{REQUEST_FILENAME} -d
+        RewriteRule ^.*$ - [NC,L]
+        
+        RewriteRule ^(.*) /index.html [NC,L]
+
+        # Si vous souhaitez modifier l'emplacement des logs de ce virtual host
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>VirtualHost</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p><img src="/assets/img/virtual_host.87258718.jpg" alt="Configuration du virtual host du projet"> <em>Figure 1 : Configuration du virtual host du projet</em></p> <p>Sauvegardez et testez cette configuration, s'il y a des erreurs de syntaxe, celles-ci seront indiquées</p> <div class="language-bash extra-class"><pre class="language-bash"><code>apachectl configtest
+</code></pre></div><p>Désactivez le site par défaut et activez votre projet</p> <div class="language-bash extra-class"><pre class="language-bash"><code>a2disite 000-default.conf
+a2ensite 001-chantemelse.conf
+</code></pre></div><p>Rechargez maintenant le service Apache</p> <div class="language-bash extra-class"><pre class="language-bash"><code>systemctl reload apache2
+</code></pre></div><p>Ouvrez votre navigateur et entrez l'adresse IP du serveur, le site devrait s'afficher.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/guide/app-upload.html" class="prev">
+        Upload de l'application
+      </a></span> <span class="next"><a href="/guide/java-part-two.html">
+        Java - Partie 2
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.39a297a1.js" defer></script><script src="/assets/js/2.d9ae6553.js" defer></script><script src="/assets/js/10.c59cd745.js" defer></script>
+  </body>
+</html>

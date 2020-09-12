@@ -1,4 +1,4 @@
-# Java
+# Java - Partie 1
 
 ## Installation
 
@@ -32,5 +32,5 @@ echo $JAVA_HOME
 echo $PATH
 ```
    
-![Valeur des variables d'environnement $JAVA_HOME et $PATH](./java_env.jpg)
+![Valeur des variables d'environnement $JAVA_HOME et $PATH](./images/java_env.jpg)
 *Figure 1 : Valeur des variables d'environnement $JAVA_HOME et $PATH*

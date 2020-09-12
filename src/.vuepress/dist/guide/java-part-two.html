@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Java - Partie 2 | Mise en production</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    
+    <meta name="description" content="Guide de mise en production d'une application Spring Boot et Angular sur un VPS">
+    <meta name="theme-color" content="#CC444B">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="preload" href="/assets/css/0.styles.95b730f6.css" as="style"><link rel="preload" href="/assets/js/app.39a297a1.js" as="script"><link rel="preload" href="/assets/js/2.d9ae6553.js" as="script"><link rel="preload" href="/assets/js/12.66885306.js" as="script"><link rel="prefetch" href="/assets/js/10.c59cd745.js"><link rel="prefetch" href="/assets/js/11.230735fe.js"><link rel="prefetch" href="/assets/js/13.80b91e58.js"><link rel="prefetch" href="/assets/js/14.f66f6672.js"><link rel="prefetch" href="/assets/js/15.4282239f.js"><link rel="prefetch" href="/assets/js/3.81568f7d.js"><link rel="prefetch" href="/assets/js/4.a7915040.js"><link rel="prefetch" href="/assets/js/5.83f26f6d.js"><link rel="prefetch" href="/assets/js/6.d47fba61.js"><link rel="prefetch" href="/assets/js/7.1911ca3b.js"><link rel="prefetch" href="/assets/js/8.c0045156.js"><link rel="prefetch" href="/assets/js/9.1327603b.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.95b730f6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Mise en production</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">
+  Guide
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">
+  Guide
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Guide</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/" aria-current="page" class="sidebar-link">Introduction</a></li><li><a href="/guide/first-steps.html" class="sidebar-link">Premiers pas</a></li><li><a href="/guide/security.html" class="sidebar-link">Sécurité</a></li><li><a href="/guide/web-server-part-one.html" class="sidebar-link">Serveur Web Apache - Partie 1</a></li><li><a href="/guide/database.html" class="sidebar-link">Base de données MySQL</a></li><li><a href="/guide/java-part-one.html" class="sidebar-link">Java - Partie 1</a></li><li><a href="/guide/app-upload.html" class="sidebar-link">Upload de l'application</a></li><li><a href="/guide/web-server-part-two.html" class="sidebar-link">Serveur Web Apache - Partie 2</a></li><li><a href="/guide/java-part-two.html" aria-current="page" class="active sidebar-link">Java - Partie 2</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/java-part-two.html#mise-en-place-du-service" class="sidebar-link">Mise en place du service</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="java-partie-2"><a href="#java-partie-2" class="header-anchor">#</a> Java - Partie 2</h1> <h2 id="mise-en-place-du-service"><a href="#mise-en-place-du-service" class="header-anchor">#</a> Mise en place du service</h2> <p>Passez en super utilisateur <code>root</code> et créez le fichier <code>/etc/systemd/system/&lt;nom_du_projet&gt;.service</code> :</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">touch</span> /etc/systemd/system/<span class="token operator">&lt;</span>nom_du_projet<span class="token operator">&gt;</span>.service
+</code></pre></div><p>Modifiez-le à l'aide de nano :</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">nano</span> /etc/systemd/system/<span class="token operator">&lt;</span>nom_du_projet<span class="token operator">&gt;</span>.service
+</code></pre></div><p>Remplissez ce fichier avec les lignes suivantes (Figure 1) :</p> <div class="language-markup extra-class"><pre class="language-markup"><code>[Unit]
+Description=Java Service for <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nom_du_projet</span><span class="token punctuation">&gt;</span></span>
+
+[Service]
+User=ubuntu
+ExecStart=/home/ubuntu/www/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nom_du_projet</span><span class="token punctuation">&gt;</span></span>/back/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nom_du_fichier</span><span class="token punctuation">&gt;</span></span>.jar
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+</code></pre></div><p><img src="src/guide/images/java_service.jpg" alt="Contenu du service"> <em>Figure 1 : Contenu du service</em></p> <p>Rechargez les services :</p> <div class="language-bash extra-class"><pre class="language-bash"><code>systemctl daemon-reload
+</code></pre></div><p>Activez le service à l'aide de cette commande :</p> <div class="language-bash extra-class"><pre class="language-bash"><code>systemctl <span class="token builtin class-name">enable</span> <span class="token operator">&lt;</span>nom_du_projet<span class="token operator">&gt;</span>.service
+</code></pre></div><p>Démarrez-le comme cela :</p> <div class="language-bash extra-class"><pre class="language-bash"><code>systemctl start <span class="token operator">&lt;</span>nom_du_projet<span class="token operator">&gt;</span>.service
+</code></pre></div><p>Et vérifiez son statut (Figure 2) :</p> <div class="language-bash extra-class"><pre class="language-bash"><code>systemctl status <span class="token operator">&lt;</span>nom_du_projet<span class="token operator">&gt;</span>.service
+</code></pre></div><p><img src="/assets/img/java_service_status.8821fa9d.jpg" alt="Statut du service"> <em>Figure 2 : Statut du service</em></p> <p>Le back-end devrait maintenant fonctionner !</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/guide/web-server-part-two.html" class="prev">
+        Serveur Web Apache - Partie 2
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.39a297a1.js" defer></script><script src="/assets/js/2.d9ae6553.js" defer></script><script src="/assets/js/12.66885306.js" defer></script>
+  </body>
+</html>

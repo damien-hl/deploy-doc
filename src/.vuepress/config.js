@@ -51,10 +51,12 @@ module.exports = {
                         '',
                         'first-steps',
                         'security',
-                        'web-server',
+                        'web-server-part-one',
                         'database',
-                        'java',
+                        'java-part-one',
                         'app-upload',
+                        'web-server-part-two',
+                        'java-part-two',
                     ]
                 }
             ],

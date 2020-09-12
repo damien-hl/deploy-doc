@@ -1,4 +1,4 @@
-# Serveur Web Apache
+# Serveur Web Apache - Partie 1
 
 ## Installation d'Apache
 
@@ -16,7 +16,7 @@ Pendant l'installation, Apache ajoute ses propres règles au pare-feu, vous pouv
 sudo ufw app list
 ```
 
-![3 règles ajoutées par Apache](./apache-rules.jpg)
+![3 règles ajoutées par Apache](./images/apache-rules.jpg)
 *Figure 1 : 3 règles ajoutées par Apache*
 
 Vérifiez maintenant si Apache s'est lancé
@@ -31,5 +31,5 @@ sudo systemctl start apache2
 
 Ouvrez votre navigateur et entrez-y l'adresse IP du serveur, si tout s'est bien passé, vous devriez voir la page par défaut d'Apache
 
-![Page par défaut d'Apache](./apache-index.jpg)
+![Page par défaut d'Apache](./images/apache-index.jpg)
 *Figure 2 : Page par défaut d'Apache*
