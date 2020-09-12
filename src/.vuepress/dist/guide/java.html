@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Java | Mise en production</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    
+    <meta name="description" content="Guide de mise en production d'une application Spring Boot et Angular sur un VPS">
+    <meta name="theme-color" content="#CC444B">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="preload" href="/assets/css/0.styles.95b730f6.css" as="style"><link rel="preload" href="/assets/js/app.80df264c.js" as="script"><link rel="preload" href="/assets/js/2.d9ae6553.js" as="script"><link rel="preload" href="/assets/js/10.c7e62b54.js" as="script"><link rel="prefetch" href="/assets/js/11.f3f0c586.js"><link rel="prefetch" href="/assets/js/12.b11db377.js"><link rel="prefetch" href="/assets/js/13.99081473.js"><link rel="prefetch" href="/assets/js/3.7401dea5.js"><link rel="prefetch" href="/assets/js/4.6ed12234.js"><link rel="prefetch" href="/assets/js/5.19ba502f.js"><link rel="prefetch" href="/assets/js/6.13ed795b.js"><link rel="prefetch" href="/assets/js/7.1209d8f2.js"><link rel="prefetch" href="/assets/js/8.6ebf2136.js"><link rel="prefetch" href="/assets/js/9.4d2ccfd5.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.95b730f6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Mise en production</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">
+  Guide
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">
+  Guide
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Guide</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/" aria-current="page" class="sidebar-link">Introduction</a></li><li><a href="/guide/first-steps.html" class="sidebar-link">Premiers pas</a></li><li><a href="/guide/security.html" class="sidebar-link">Sécurité</a></li><li><a href="/guide/web-server.html" class="sidebar-link">Serveur Web Apache</a></li><li><a href="/guide/database.html" class="sidebar-link">Base de données MySQL</a></li><li><a href="/guide/java.html" aria-current="page" class="active sidebar-link">Java</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/java.html#installation" class="sidebar-link">Installation</a></li><li class="sidebar-sub-header"><a href="/guide/java.html#configuration" class="sidebar-link">Configuration</a></li></ul></li><li><a href="/guide/app-upload.html" class="sidebar-link">Upload de l'application</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="java"><a href="#java" class="header-anchor">#</a> Java</h1> <h2 id="installation"><a href="#installation" class="header-anchor">#</a> Installation</h2> <p>Sur le serveur, installez OpenJDK avec la commande suivante</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> default-jre
+</code></pre></div><p>Vérifiez l'installation</p> <div class="language-bash extra-class"><pre class="language-bash"><code>java -version
+</code></pre></div><h2 id="configuration"><a href="#configuration" class="header-anchor">#</a> Configuration</h2> <p>Définissez la variable d'environnement $JAVA_HOME</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable">JAVA_HOME</span><span class="token operator">=</span>/usr/lib/jvm/java-11-openjdk-amd64
+</code></pre></div><p>Vérifiez que ce chemin est le bon !</p> <p>Ajoutez le dossier binaire de Java à la variable d'environnement PATH</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span><span class="token builtin class-name">:</span><span class="token variable">$JAVA_HOME</span>/bin
+</code></pre></div><p>Vous pouvez voir la valeur de ces variables avec ces commandes (Figure 1)</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">echo</span> <span class="token variable">$JAVA_HOME</span>
+<span class="token builtin class-name">echo</span> <span class="token environment constant">$PATH</span>
+</code></pre></div><p><img src="/assets/img/java_env.c0802e85.jpg" alt="Valeur des variables d'environnement $JAVA_HOME et $PATH"> <em>Figure 1 : Valeur des variables d'environnement $JAVA_HOME et $PATH</em></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/guide/database.html" class="prev">
+        Base de données MySQL
+      </a></span> <span class="next"><a href="/guide/app-upload.html">
+        Upload de l'application
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.80df264c.js" defer></script><script src="/assets/js/2.d9ae6553.js" defer></script><script src="/assets/js/10.c7e62b54.js" defer></script>
+  </body>
+</html>
