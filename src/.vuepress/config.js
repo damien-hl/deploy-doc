@@ -54,6 +54,7 @@ module.exports = {
                         'first-steps',
                         'security',
                         'web-server',
+                        'app-upload',
                     ]
                 }
             ],
