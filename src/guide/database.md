@@ -4,7 +4,7 @@
 
 Sur votre ordinateur, sauvegardez votre base de données locale pour pouvoir ensuite seeder la base de données de votre serveur
 ``` bash
-mysqldump -u <nom_utilisateur_bbd> -p <nom_de_la_bdd> > seed.sql
+mysqldump -u dev1234 -p chantemelse > seed.sql
 ```
 
 Cela va vous créer un fichier `seed.sql` dans le répertoire où vous vous trouver (Figure 1)
@@ -16,7 +16,7 @@ Envoyez ce fichier sur votre serveur, dans le dossier de l'utilisateur `~/` avec
 
 Avec SCP par exemple :
 ``` bash
-scp -P 1337 ./seed.sql <nom_d_utilisateur>@<IP_du_serveur>:~/
+scp -P 1337 ./seed.sql ubuntu@195.154.0.1:~/
 ```
 
 ## Installation de MySQL Server
@@ -55,17 +55,17 @@ sudo mysql
 
 Créez une base de données pour votre application, le nom de cette base doit correspondre à celle renseignée dans votre fichier `application.properties` dans Spring Boot
 ``` sql
-CREATE DATABASE <nom_de_la_base>;
+CREATE DATABASE chantemelse;
 ```
 
 Ajoutez un nouvel utilisateur dont le nom correspond à celui définit dans votre fichier `application.properties` dans Spring Boot
 ``` sql
-CREATE USER '<nom_utilisateur_bbd>'@'localhost' IDENTIFIED BY 'password_utilisateur_bbd';
+CREATE USER 'dev1234'@'localhost' IDENTIFIED BY 'pass1234';
 ```
 
 Accordez toutes les permissions sur la base de données à votre utilisateur (Figure 4)
 ``` sql
-GRANT ALL PRIVILEGES ON <nom_de_la_base>.* TO 'nom_utilisateur_bbd'@'localhost' IDENTIFIED BY 'password_utilisateur_bbd';
+GRANT ALL PRIVILEGES ON chantemelse.* TO 'dev1234'@'localhost' IDENTIFIED BY 'pass1234';
 ```
 
 ![Création d'un utilisateur](./images/config_mysql.jpg)
@@ -73,7 +73,7 @@ GRANT ALL PRIVILEGES ON <nom_de_la_base>.* TO 'nom_utilisateur_bbd'@'localhost' 
 
 Quittez la session MySQL et reconnectez-vous avec l'utilisateur nouvellement crée
 ``` bash
-mysql -u <nom_utilisateur_bbd> -p
+mysql -u dev1234 -p
 ```
 
 Affichez les bases de données accessible par cet utilisateur (Figure 5)
@@ -90,5 +90,5 @@ Vous pouvez à présent quittez cette session MySQl.
  
 Pour restaurer votre sauvegarde MySQL, placez-vous dans le dossier où se trouve votre sauvegarde et exécuter la commande suivante
 ``` bash
-mysql -u <nom_utilisateur_bbd> -p <nom_de_la_base> < seed.sql
+mysql -u dev1234 -p chantemelse < seed.sql
 ```

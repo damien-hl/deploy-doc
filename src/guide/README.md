@@ -1,20 +1,23 @@
 # Introduction
 
-Ce document a pour but de vous guider dans la mise en production d'une application full stack réalisée sous Spring Boot 2.3.3 et Angular 8.
+Ce document a pour but de vous guider dans la mise en production d'une application full stack développée avec Spring Boot 2, Angular 8 et MySQL.
 
 ## Prérequis
 
 Ce guide a été réalisé avec les éléments suivants :
-- un serveur sous Ubuntu 18.04.5 LTS
+- un serveur sous Ubuntu 18
 - un accès en ligne de commande
 
 ## Informations du serveur
 
-Pour plus de simplicité, les informations suivantes seront utilisées dans les extraits de commandes, remplacez-les par les vôtres !
+Pour plus de simplicité, le guide a été écrit pour un projet nommé `Chantemelse`, remplacez ces informations par les vôtres !
 
-``` text
-utilisateur: <utilisateur>
-mot de passe: <mot_de_passe>
-adresse IP: <IP_du_serveur>
 ```
-
+utilisateur: ubuntu
+mot de passe: password
+nom du projet: chantemelse
+adresse IP: 195.154.0.1
+utilisateur base de données: dev1234
+utilisateur base de données: pass1234
+nom base de données: chantemelse
+```

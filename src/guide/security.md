@@ -2,9 +2,9 @@
 
 ## Sudo
 
-Afin qu'il ait plus de pouvoir, ajoutons notre utilisateur au groupe `sudo`
+Afin qu'il ait plus de pouvoir, ajoutons l'utilisateur `ubuntu` au groupe `sudo`
 ``` bash
-usermod -aG sudo <utilisateur>
+usermod -aG sudo ubuntu
 ```
 
 ## Configurer SSH
@@ -43,9 +43,11 @@ PermitRootLogin no
 Quittez et sauvegardez avec `CTRL + X`
 
 Redémarrez le service SSH
+
 ``` bash
 systemctl restart sshd
 ```
+
 Vérifiez le statut du service (Figure 1)
 ``` bash
 systemctl status sshd
@@ -58,7 +60,7 @@ systemctl status sshd
 
 Vous pouvez à présent vous déconnectez du serveur et vous reconnectez avec le nouveau port pour vérifier que cela fonctionne correctement
 ``` bash
-ssh <utilisateur>@<IP_du_serveur> -p 1337
+ssh ubuntu@195.154.0.1 -p 1337
 ```
 
 ## Authentification par clé SSH - *Facultatif*
@@ -72,10 +74,10 @@ exit
 
 Pour copier le fichier de votre clé publique SSH sur le serveur,
 ``` bash
- scp -P 1337 ~\.ssh\id_rsa.pub <utilisateur>@<IP_du_serveur>:~
+ scp -P 1337 ~\.ssh\id_rsa.pub ubuntu@195.154.0.1:~
 ```
 
-Le fichier devrait se retrouver sur le serveur, dans le dossier de l'utilisateur, soit `/home/<utilisateur>/id_rsa.pub` (Figure 2)
+Le fichier devrait se retrouver sur le serveur, dans le dossier de l'utilisateur, soit `/home/ubuntu/id_rsa.pub` (Figure 2)
 
 ![Fichier de la clé publique SSH](./images/ssh-copy.jpg)
 *Figure 2 : Fichier de la clé publique SSH*

@@ -2,24 +2,29 @@
 
 ## Mise en place du service
 
-Passez en super utilisateur `root` et créez le fichier `/etc/systemd/system/<nom_du_projet>.service` :
+Donnez à l'utilisateur, les droits d'exécuter le fichier .jar :
 ``` bash
-touch /etc/systemd/system/<nom_du_projet>.service
+sudo chmod +x chantemelse-0.0.1-SNAPSHOT.jar
+``` 
+
+Passez en super utilisateur `root` et créez le fichier `/etc/systemd/system/chantemelse.service` :
+``` bash
+touch /etc/systemd/system/chantemelse.service
 ``` 
 
 Modifiez-le à l'aide de nano :
 ``` bash
-nano /etc/systemd/system/<nom_du_projet>.service
+nano /etc/systemd/system/chantemelse.service
 ``` 
 
 Remplissez ce fichier avec les lignes suivantes (Figure 1) :
 ``` markup
 [Unit]
-Description=Java Service for <nom_du_projet>
+Description=Java Service for chantemelse
 
 [Service]
 User=ubuntu
-ExecStart=/home/ubuntu/www/<nom_du_projet>/back/<nom_du_fichier>.jar
+ExecStart=/home/ubuntu/www/chantemelse/back/chantemelse-0.0.1-SNAPSHOT.jar
 SuccessExitStatus=143
 TimeoutStopSec=10
 Restart=on-failure
@@ -39,17 +44,17 @@ systemctl daemon-reload
 
 Activez le service à l'aide de cette commande :
 ``` bash
-systemctl enable <nom_du_projet>.service
+systemctl enable chantemelse.service
 ``` 
 
 Démarrez-le comme cela :
 ``` bash
-systemctl start <nom_du_projet>.service
+systemctl start chantemelse.service
 ``` 
 
 Et vérifiez son statut (Figure 2) :
 ``` bash
-systemctl status <nom_du_projet>.service
+systemctl status chantemelse.service
 ``` 
 
 ![Statut du service](./images/java_service_status.jpg)

@@ -4,7 +4,7 @@
 
 Commencez par vous connecter au serveur, pour cela ouvrez votre terminal et tapez la commande suivante :
 ``` bash
-ssh <utilisateur>@<IP_du_serveur> -p 22
+ssh ubuntu@195.154.0.1 -p 22
 ```
 Entrez `yes` pour indiquer que vous souhaitez continuer la connexion (Figure 1).
 

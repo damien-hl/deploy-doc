@@ -5,18 +5,17 @@
 Sur le serveur, créez un dossier `www` dans le répertoire de votre utilisateur
 ``` bash
 mkdir www
-cd ./<nom_du_projet>
 ```
 
 Créez ensuite à l'intérieur un dossier portant le nom du projet
 ``` bash
 cd ./www
-mkdir <nom_du_projet>
+mkdir chantemelse
 ```
 
 Enfin à l'intérieur de ce nouveau dossier, créez-en 2 autres, un pour le front-end et un pour le back-end (Figure 1)
 ``` bash
-cd ./<nom_du_projet>
+cd ./chantemelse
 mkdir front back
 ```
 
@@ -43,7 +42,7 @@ Compilez votre projet pour la production avec la commande
 ng build --prod
 ``` 
 
-Par défaut Angular va compiler votre projet dans `/dist/<nom_du_projet>/` (Figure 3)
+Par défaut Angular va compiler votre projet dans `/dist/chantemelse/` (Figure 3)
 
 ![Contenu du projet compilé](./images/angular_dist.jpg)
 *Figure 3 : Contenu du projet compilé*
@@ -88,7 +87,7 @@ Si tout se passe bien, vous devriez voir à la fin `BUILD SUCCESS` (Figure 5)
 ![Compilation du projet Spring Boot](./images/spring_boot_build_success.jpg)
 *Figure 5 : Compilation du projet Spring Boot*
 
-La compilation devrait avoir généré plusieurs fichiers, seul un vous intéresse, il se trouve dans le dossier target et se nomme `<nom_du_projet>-0.0.1-SNAPSHOT.jar` (Figure 6)
+La compilation devrait avoir généré plusieurs fichiers, seul un vous intéresse, il se trouve dans le dossier target et se nomme `chantemelse-0.0.1-SNAPSHOT.jar` (Figure 6)
 
 ![Contenu du projet compilé](./images/spring_boot_dist.jpg)
 *Figure 6 : Contenu du projet compilé, le fichier qui nous intéresse ici est `chantemelse-0.0.1-SNAPSHOT.jar`*
@@ -146,7 +145,7 @@ scp
 
 Pour copier le contenu du dossier du front (Figure 12)
 ``` bash
-scp -P 1337 -r <dossier_build_du_projet_front_local> <nom_d_utilisateur>@<IP_du_serveur>:<dossier_du_projet_front_remote>
+scp -P 1337 -r  ubuntu@195.154.0.1:~/www/chantemelse/back
 ``` 
 
 ![Copie SSH du projet front](./images/scp_local_remote_upload_front.jpg)
@@ -158,7 +157,7 @@ Répétez la même opération pour le fichier jar du back.
 
 Pour copier le contenu du dossier du front (Figure 13)
 ``` bash
-scp -P 1337 <fichier_jar_du_projet_back_local> <nom_d_utilisateur>@<IP_du_serveur>:<dossier_du_projet_back_remote>
+scp -P 1337 ./chantemelse-0.0.1-SNAPSHOT.jar <nom_d_utilisateur>@<IP_du_serveur>:<dossier_du_projet_back_remote>
 ``` 
 
 ![Copie SSH du projet back](./images/scp_local_remote_upload_back.jpg)
@@ -173,13 +172,13 @@ Connectez-vous maintenant en SSH au serveur et vérifiez que vos fichiers ont bi
 
 Vous pouvez lancer le projet back pour voir s'il se lance (Figure 15)
 ``` bash
-java -jar ~/www/<nom_du_projet>/back/<nom_du_fichier>.jar
+java -jar ~/www/chantemelse/back/chantemelse-0.0.1-SNAPSHOT.jar
 ``` 
 
 ![Lancement du projet back sur le serveur](./images/launch_java.jpg)
 *Figure 15 : Lancement du projet back sur le serveur*
 
-Sur votre navigateur, essayez d'accéder au serveur sur le port du back (ici 8081) soit `http://<IP_du_serveur>:8081` (Figure 16)
+Sur votre navigateur, essayez d'accéder au serveur sur le port du back (ici 8081) soit `http://195.154.0.1:8081` (Figure 16)
 
 ![Page d'erreur de Spring Boot](./images/index_back.jpg)
 *Figure 16 : Page d'erreur de Spring Boot*

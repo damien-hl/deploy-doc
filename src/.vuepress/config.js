@@ -56,7 +56,8 @@ module.exports = {
                         'java-part-one',
                         'app-upload',
                         'web-server-part-two',
-                        'java-part-two',
+                        'phpmyadmin',
+                        'java-part-two'
                     ]
                 }
             ],
