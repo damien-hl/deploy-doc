@@ -10,7 +10,7 @@
     <meta name="theme-color" content="#CC444B">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="preload" href="/assets/css/0.styles.95b730f6.css" as="style"><link rel="preload" href="/assets/js/app.d5fb2abd.js" as="script"><link rel="preload" href="/assets/js/2.d9ae6553.js" as="script"><link rel="preload" href="/assets/js/10.7a91cbd8.js" as="script"><link rel="prefetch" href="/assets/js/11.376b5262.js"><link rel="prefetch" href="/assets/js/12.d1068c7f.js"><link rel="prefetch" href="/assets/js/13.80b91e58.js"><link rel="prefetch" href="/assets/js/14.f66f6672.js"><link rel="prefetch" href="/assets/js/15.9347c9fe.js"><link rel="prefetch" href="/assets/js/16.07828830.js"><link rel="prefetch" href="/assets/js/3.2db3b3d3.js"><link rel="prefetch" href="/assets/js/4.7227d415.js"><link rel="prefetch" href="/assets/js/5.83f26f6d.js"><link rel="prefetch" href="/assets/js/6.6855ed3b.js"><link rel="prefetch" href="/assets/js/7.96024cd1.js"><link rel="prefetch" href="/assets/js/8.64c6368b.js"><link rel="prefetch" href="/assets/js/9.a95c61e6.js">
+    <link rel="preload" href="/assets/css/0.styles.95b730f6.css" as="style"><link rel="preload" href="/assets/js/app.d61deb21.js" as="script"><link rel="preload" href="/assets/js/2.138b575c.js" as="script"><link rel="preload" href="/assets/js/13.3808b438.js" as="script"><link rel="prefetch" href="/assets/js/10.b8eff6f1.js"><link rel="prefetch" href="/assets/js/11.671722f8.js"><link rel="prefetch" href="/assets/js/12.3f3f5cdc.js"><link rel="prefetch" href="/assets/js/14.edcbc31b.js"><link rel="prefetch" href="/assets/js/15.d749a2d9.js"><link rel="prefetch" href="/assets/js/16.b4b7125e.js"><link rel="prefetch" href="/assets/js/3.1e793882.js"><link rel="prefetch" href="/assets/js/4.76fbd84c.js"><link rel="prefetch" href="/assets/js/5.59c3e65a.js"><link rel="prefetch" href="/assets/js/6.5a7c12bd.js"><link rel="prefetch" href="/assets/js/7.46ed2f30.js"><link rel="prefetch" href="/assets/js/8.51c91ca4.js"><link rel="prefetch" href="/assets/js/9.897fba2c.js">
     <link rel="stylesheet" href="/assets/css/0.styles.95b730f6.css">
   </head>
   <body>
@@ -18,45 +18,11 @@
   Guide
 </a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">
   Guide
-</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Guide</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/" aria-current="page" class="sidebar-link">Introduction</a></li><li><a href="/guide/first-steps.html" class="sidebar-link">Premiers pas</a></li><li><a href="/guide/security.html" class="sidebar-link">Sécurité</a></li><li><a href="/guide/web-server-part-one.html" class="sidebar-link">Serveur Web Apache - Partie 1</a></li><li><a href="/guide/database.html" class="sidebar-link">Base de données MySQL</a></li><li><a href="/guide/java-part-one.html" class="sidebar-link">Java - Partie 1</a></li><li><a href="/guide/app-upload.html" class="sidebar-link">Upload de l'application</a></li><li><a href="/guide/web-server-part-two.html" aria-current="page" class="active sidebar-link">Serveur Web Apache - Partie 2</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/web-server-part-two.html#configuration-d-apache" class="sidebar-link">Configuration d'Apache</a></li></ul></li><li><a href="/guide/java-part-two.html" class="sidebar-link">Java - Partie 2</a></li><li><a href="/guide/ssl.html" class="sidebar-link">Certificat SSL</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="serveur-web-apache-partie-2"><a href="#serveur-web-apache-partie-2" class="header-anchor">#</a> Serveur Web Apache - Partie 2</h1> <h2 id="configuration-d-apache"><a href="#configuration-d-apache" class="header-anchor">#</a> Configuration d'Apache</h2> <p>Avant de configurer spécifiquement le projet, il est nécessaire d'effectuer quelques modifications à la configuration d'Apache.</p> <p>Tout d'abord, sur votre serveur, passez en super utilisateur <code>root</code> et activez le module <code>rewrite</code> d'Apache :</p> <div class="language-bash extra-class"><pre class="language-bash"><code>a2enmod rewrite
-</code></pre></div><p>Ajoutez maintenant le dossier <code>/home/&lt;nom_utilisateur&gt;/www</code> dans la liste des dossiers gérés par Apache (Figure 2)
-Pour cela, ouvrez le fichier <code>/etc/apache2/apache2.conf</code> et modifiez les lignes indiquées :</p> <div class="language-bash extra-class"><div class="highlight-lines"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><br><br><br><br><br><br><br></div><pre class="language-bash"><code><span class="token comment"># Sets the default security model of the Apache2 HTTPD server. It does</span>
-<span class="token comment"># not allow access to the root filesystem outside of /usr/share and /var/www.</span>
-<span class="token comment"># The former is used by web applications packaged in Debian,</span>
-<span class="token comment"># the latter may be used for local directories served by the web server. If</span>
-<span class="token comment"># your system is serving content from a sub-directory in /srv you must allow</span>
-<span class="token comment"># access here, or in any related virtual host.</span>
-<span class="token operator">&lt;</span>Directory /<span class="token operator">&gt;</span>
-        Options FollowSymLinks
-        AllowOverride None
-        Require all denied
-<span class="token operator">&lt;</span>/Directory<span class="token operator">&gt;</span>
-
-<span class="token operator">&lt;</span>Directory /usr/share<span class="token operator">&gt;</span>
-        AllowOverride None
-        Require all granted
-<span class="token operator">&lt;</span>/Directory<span class="token operator">&gt;</span>
-
-<span class="token operator">&lt;</span>Directory /var/www/<span class="token operator">&gt;</span>
-        Options Indexes FollowSymLinks
-        AllowOverride None
-        Require all granted
-<span class="token operator">&lt;</span>/Directory<span class="token operator">&gt;</span>
-
-<span class="token operator">&lt;</span>Directory /home/<span class="token operator">&lt;</span>nom_utilisateur<span class="token operator">&gt;</span>/www/<span class="token operator">&gt;</span>
-        Options Indexes FollowSymLinks
-        AllowOverride None
-        Require all granted
-<span class="token operator">&lt;</span>/Directory<span class="token operator">&gt;</span>
-
-<span class="token comment">#&lt;Directory /srv/&gt;</span>
-<span class="token comment">#       Options Indexes FollowSymLinks</span>
-<span class="token comment">#       AllowOverride None</span>
-<span class="token comment">#       Require all granted</span>
-<span class="token comment">#&lt;/Directory&gt;</span>
-</code></pre></div><p><img src="/assets/img/apache_folders.49377df1.jpg" alt="Liste des dossiers gérés par Apache"> <em>Figure 2 : Liste des dossiers gérés par Apache</em></p> <p>Redémarrez le service Apache</p> <div class="language-bash extra-class"><pre class="language-bash"><code>systemctl restart apache2
-</code></pre></div><p>Vous allez maintenant créer un virtual host pour votre projet.</p> <p>Copiez la configuration du site par défaut d'Apache, nommez-la <code>001-&lt;nom_du_projet&gt;</code></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">cp</span> /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/001-<span class="token operator">&lt;</span>nom_du_projet<span class="token operator">&gt;</span>.conf
-</code></pre></div><p>Éditez ce fichier avec nano</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">nano</span> /etc/apache2/sites-available/001-<span class="token operator">&lt;</span>nom_du_projet<span class="token operator">&gt;</span>.conf
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Guide</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/" aria-current="page" class="sidebar-link">Introduction</a></li><li><a href="/guide/first-steps.html" class="sidebar-link">Premiers pas</a></li><li><a href="/guide/security.html" class="sidebar-link">Sécurité</a></li><li><a href="/guide/web-server-part-one.html" class="sidebar-link">Serveur Web Apache - Partie 1</a></li><li><a href="/guide/database.html" class="sidebar-link">Base de données MySQL</a></li><li><a href="/guide/java-part-one.html" class="sidebar-link">Java - Partie 1</a></li><li><a href="/guide/app-upload.html" class="sidebar-link">Upload de l'application</a></li><li><a href="/guide/web-server-part-two.html" aria-current="page" class="active sidebar-link">Serveur Web Apache - Partie 2</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/web-server-part-two.html#configuration-d-apache" class="sidebar-link">Configuration d'Apache</a></li></ul></li><li><a href="/guide/phpmyadmin.html" class="sidebar-link">PHPMyAdmin</a></li><li><a href="/guide/java-part-two.html" class="sidebar-link">Java - Partie 2</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="serveur-web-apache-partie-2"><a href="#serveur-web-apache-partie-2" class="header-anchor">#</a> Serveur Web Apache - Partie 2</h1> <h2 id="configuration-d-apache"><a href="#configuration-d-apache" class="header-anchor">#</a> Configuration d'Apache</h2> <p>Avant de configurer spécifiquement le projet, il est nécessaire d'effectuer quelques modifications à la configuration d'Apache.</p> <p>Tout d'abord, sur votre serveur, passez en super utilisateur <code>root</code> et activez le module <code>rewrite</code> d'Apache :</p> <div class="language-bash extra-class"><pre class="language-bash"><code>a2enmod rewrite
+</code></pre></div><p>Créez un lien symbolique du projet front dans le dossier <code>/var/www</code> :</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">ln</span> -s /home/ubuntu/www/chantemelse/front /var/www/chantemelse
+</code></pre></div><p>Redémarrez le service Apache</p> <div class="language-bash extra-class"><pre class="language-bash"><code>systemctl restart apache2
+</code></pre></div><p>Vous allez maintenant créer un virtual host pour votre projet.</p> <p>Copiez la configuration du site par défaut d'Apache, nommez-la <code>001-chantemelse</code></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">cp</span> /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/001-chantemelse.conf
+</code></pre></div><p>Éditez ce fichier avec nano</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">nano</span> /etc/apache2/sites-available/001-chantemelse.conf
 </code></pre></div><p>Modifiez-le comme ceci (Figure 1)</p> <div class="language-markup extra-class"><pre class="language-markup"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>VirtualHost</span> <span class="token attr-name"><span class="token namespace">*:</span>80</span><span class="token punctuation">&gt;</span></span>
         # Entrez en dessous votre nom de domaine, exemple : chantemelse.com
         ServerName chantemelse.com 
@@ -66,16 +32,13 @@ Pour cela, ouvrez le fichier <code>/etc/apache2/apache2.conf</code> et modifiez 
         # Si vous avez une adresse email à afficher en cas de problème, entrez-la ici
         ServerAdmin webmaster@chantemelse.com  
         # Indiquez le dossier dans lequel se trouve votre projet front
-        DocumentRoot /home/ubuntu/www/chantemelse/front
+        DocumentRoot /var/www/chantemelse
 
-        # Réécriture d'URL pour les Single Page Application
-        RewriteEngine on
-        RewriteCond %{REQUEST_FILENAME} -s [OR]
-        RewriteCond %{REQUEST_FILENAME} -l [OR]
-        RewriteCond %{REQUEST_FILENAME} -d
-        RewriteRule ^.*$ - [NC,L]
-        
-        RewriteRule ^(.*) /index.html [NC,L]
+        # Changement du comportement d'Apache pour le répertoire
+        &lt;Directory /var/www/chantemelse&gt;
+            Options -Indexes
+            AllowOverride all
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Directory</span><span class="token punctuation">&gt;</span></span>
 
         # Si vous souhaitez modifier l'emplacement des logs de ce virtual host
         ErrorLog ${APACHE_LOG_DIR}/error.log
@@ -85,15 +48,22 @@ Pour cela, ouvrez le fichier <code>/etc/apache2/apache2.conf</code> et modifiez 
 </code></pre></div><p>Désactivez le site par défaut et activez votre projet</p> <div class="language-bash extra-class"><pre class="language-bash"><code>a2disite 000-default.conf
 a2ensite 001-chantemelse.conf
 </code></pre></div><p>Rechargez maintenant le service Apache</p> <div class="language-bash extra-class"><pre class="language-bash"><code>systemctl reload apache2
-</code></pre></div><p>Ouvrez votre navigateur et entrez l'adresse IP du serveur, le site devrait s'afficher.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre></div><p>Le projet front étant une application SPA <code>Single Page Application</code>, il peut être nécessaire de faire appel à la réécriture d'URL d'Apache via un fichier <code>.htaccess</code> pour que les routes définies dans l'application soient appelées correctement.
+Pour cela, quittez d'abord le mode super utilisateur.</p> <p>Créez un fichier <code>.htaccess</code> dans <code>/home/ubuntu/www/chantemelse/front</code>.</p> <p>Éditez ce fichier avec nano comme cela (Figure 2)</p> <div class="language- extra-class"><pre class="language-text"><code>RewriteEngine On
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+RewriteRule ^ - [L]
+
+RewriteRule ^ /index.html
+</code></pre></div><p><img src="/assets/img/virtual_host.87258718.jpg" alt="Fichier .htaccess"> <em>Figure 2 : Fichier .htaccess</em></p> <p>Ouvrez votre navigateur et entrez l'adresse IP du serveur, le site devrait s'afficher.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
       ←
       <a href="/guide/app-upload.html" class="prev">
         Upload de l'application
-      </a></span> <span class="next"><a href="/guide/java-part-two.html">
-        Java - Partie 2
+      </a></span> <span class="next"><a href="/guide/phpmyadmin.html">
+        PHPMyAdmin
       </a>
       →
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.d5fb2abd.js" defer></script><script src="/assets/js/2.d9ae6553.js" defer></script><script src="/assets/js/10.7a91cbd8.js" defer></script>
+    <script src="/assets/js/app.d61deb21.js" defer></script><script src="/assets/js/2.138b575c.js" defer></script><script src="/assets/js/13.3808b438.js" defer></script>
   </body>
 </html>
