@@ -7,10 +7,13 @@ Sur le serveur, installez OpenJDK avec la commande suivante
 sudo apt install default-jre
 ```
 
-Vérifiez l'installation
+Vérifiez l'installation (Figure 1)
 ``` bash
 java -version
 ```
+
+![Version de Java](./images/java_part_one_version.jpg)
+*Figure 1 : Version*
 
 ## Configuration
 
@@ -26,11 +29,11 @@ Ajoutez le dossier binaire de Java à la variable d'environnement PATH
 export PATH=$PATH:$JAVA_HOME/bin
 ```
 
-Vous pouvez voir la valeur de ces variables avec ces commandes (Figure 1)
+Vous pouvez voir la valeur de ces variables avec ces commandes (Figure 2)
 ``` bash
 echo $JAVA_HOME
 echo $PATH
 ```
    
-![Valeur des variables d'environnement $JAVA_HOME et $PATH](./images/java_env.jpg)
-*Figure 1 : Valeur des variables d'environnement $JAVA_HOME et $PATH*
+![Valeur des variables d'environnement $JAVA_HOME et $PATH](./images/java_part_one_env.jpg)
+*Figure 2 : Valeur des variables d'environnement $JAVA_HOME et $PATH*

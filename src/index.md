@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: ./production.webp
+heroImage: ./production.jpg
 tagline: Guide de mise en production d'une application Spring Boot et Angular sur un serveur privé virtuel
 actionText: Démarrer →
 actionLink: /guide/
