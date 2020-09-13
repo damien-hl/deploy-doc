@@ -9,7 +9,7 @@ mysqldump -u dev1234 -p chantemelse > seed.sql
 
 Cela va vous créer un fichier `seed.sql` dans le répertoire où vous vous trouver (Figure 1)
 
-![Sauvegarde de la base de données locale](src/guide/images/save_database.jpg)
+![Sauvegarde de la base de données locale](src/guide/images/database_save.jpg)
 *Figure 1 : Sauvegarde de la base de données locale*
 
 Envoyez ce fichier sur votre serveur, dans le dossier de l'utilisateur `~/` avec FileZilla ou SCP.
@@ -40,10 +40,10 @@ Remove test database and access to it? Yes
 Reload privilege table now? Yes
 ```
 
-![Série de questions](src/guide/images/secure_mysql_1.jpg)
+![Série de questions](src/guide/images/database_secure_mysql_1.jpg)
 *Figure 2 : Série de questions*
 
-![Série de questions](src/guide/images/secure_mysql_2.jpg)
+![Série de questions](src/guide/images/database_secure_mysql_2.jpg)
 *Figure 3 : Série de questions*
 
 ## Configuration de MySQL Server
@@ -68,7 +68,7 @@ Accordez toutes les permissions sur la base de données à votre utilisateur (Fi
 GRANT ALL PRIVILEGES ON chantemelse.* TO 'dev1234'@'localhost' IDENTIFIED BY 'pass1234';
 ```
 
-![Création d'un utilisateur](./images/config_mysql.jpg)
+![Création d'un utilisateur](./images/database_config_mysql.jpg)
 *Figure 4 : Création d'un utilisateur*
 
 Quittez la session MySQL et reconnectez-vous avec l'utilisateur nouvellement crée
@@ -81,7 +81,7 @@ Affichez les bases de données accessible par cet utilisateur (Figure 5)
 SHOW DATABASES;
 ```
 
-![Bases de données accessibles par cet utilisateur](./images/login_mysql.jpg)
+![Bases de données accessibles par cet utilisateur](./images/database_login_mysql.jpg)
 *Figure 5 : Bases de données accessibles par cet utilisateur*
 
 Vous pouvez à présent quittez cette session MySQl.

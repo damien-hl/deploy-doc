@@ -53,7 +53,7 @@ Vérifiez le statut du service (Figure 1)
 systemctl status sshd
 ```
 
-![Statut du service SSH](./images/ssh-status.jpg)
+![Statut du service SSH](./images/security_ssh_status.jpg)
 *Figure 1 : Statut du service SSH*
 
 <Alert message="Vérifier bien votre configuration SSH avant de vous déconnecter du serveur !"/>
@@ -79,7 +79,7 @@ Pour copier le fichier de votre clé publique SSH sur le serveur,
 
 Le fichier devrait se retrouver sur le serveur, dans le dossier de l'utilisateur, soit `/home/ubuntu/id_rsa.pub` (Figure 2)
 
-![Fichier de la clé publique SSH](./images/ssh-copy.jpg)
+![Fichier de la clé publique SSH](./images/security_ssh_copy.jpg)
 *Figure 2 : Fichier de la clé publique SSH*
 
 Ajoutez cette clé à la liste des clés autorisées à se connecter au serveur
