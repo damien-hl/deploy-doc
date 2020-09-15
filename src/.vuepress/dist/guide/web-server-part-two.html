@@ -10,7 +10,7 @@
     <meta name="theme-color" content="#CC444B">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="preload" href="/assets/css/0.styles.95b730f6.css" as="style"><link rel="preload" href="/assets/js/app.33c5a773.js" as="script"><link rel="preload" href="/assets/js/2.a73860b4.js" as="script"><link rel="preload" href="/assets/js/13.da234352.js" as="script"><link rel="prefetch" href="/assets/js/10.ddb8eeee.js"><link rel="prefetch" href="/assets/js/11.737049f2.js"><link rel="prefetch" href="/assets/js/12.7be80340.js"><link rel="prefetch" href="/assets/js/14.ea0797dc.js"><link rel="prefetch" href="/assets/js/15.898ab097.js"><link rel="prefetch" href="/assets/js/16.a7c31fbf.js"><link rel="prefetch" href="/assets/js/3.69eecd36.js"><link rel="prefetch" href="/assets/js/4.4872bc21.js"><link rel="prefetch" href="/assets/js/5.abbcc7ca.js"><link rel="prefetch" href="/assets/js/6.4ca83d0b.js"><link rel="prefetch" href="/assets/js/7.ed5c9c22.js"><link rel="prefetch" href="/assets/js/8.e4761998.js"><link rel="prefetch" href="/assets/js/9.43f7b478.js">
+    <link rel="preload" href="/assets/css/0.styles.95b730f6.css" as="style"><link rel="preload" href="/assets/js/app.375ab1b6.js" as="script"><link rel="preload" href="/assets/js/2.ce4fbfed.js" as="script"><link rel="preload" href="/assets/js/13.8b94ae31.js" as="script"><link rel="prefetch" href="/assets/js/10.ea518915.js"><link rel="prefetch" href="/assets/js/11.04deddfd.js"><link rel="prefetch" href="/assets/js/12.7249f203.js"><link rel="prefetch" href="/assets/js/14.8ab795d4.js"><link rel="prefetch" href="/assets/js/15.ea655d8a.js"><link rel="prefetch" href="/assets/js/16.7d9a6ace.js"><link rel="prefetch" href="/assets/js/3.6d42b066.js"><link rel="prefetch" href="/assets/js/4.19d58556.js"><link rel="prefetch" href="/assets/js/5.d82cdf12.js"><link rel="prefetch" href="/assets/js/6.44188ca4.js"><link rel="prefetch" href="/assets/js/7.f3bee485.js"><link rel="prefetch" href="/assets/js/8.99a8d366.js"><link rel="prefetch" href="/assets/js/9.a04fbd1a.js">
     <link rel="stylesheet" href="/assets/css/0.styles.95b730f6.css">
   </head>
   <body>
@@ -45,7 +45,7 @@
         CustomLog ${APACHE_LOG_DIR}/access.log combined
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>VirtualHost</span><span class="token punctuation">&gt;</span></span>
 </code></pre></div><p><img src="/assets/img/web_server_part_two_virtual_host.87258718.jpg" alt="Configuration du virtual host du projet"> <em>Figure 1 : Configuration du virtual host du projet</em></p> <p>Sauvegardez et testez cette configuration, s'il y a des erreurs de syntaxe, celles-ci seront indiquées</p> <div class="language-bash extra-class"><pre class="language-bash"><code>apachectl configtest
-</code></pre></div><p>Désactivez le site par défaut et activez votre projet</p> <div class="language-bash extra-class"><pre class="language-bash"><code>a2disite 000-default.conf
+</code></pre></div><p>Désactivez le site par défaut et activez votre projet</p> <div class="language-bash extra-class"><pre class="language-bash"><code>a2dissite 000-default.conf
 a2ensite 001-chantemelse.conf
 </code></pre></div><p>Rechargez maintenant le service Apache</p> <div class="language-bash extra-class"><pre class="language-bash"><code>systemctl reload apache2
 </code></pre></div><p>Le projet front étant une application SPA <code>Single Page Application</code>, il peut être nécessaire de faire appel à la réécriture d'URL d'Apache via un fichier <code>.htaccess</code> pour que les routes définies dans l'application soient appelées correctement.
@@ -64,6 +64,6 @@ RewriteRule ^ /index.html
       </a>
       →
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.33c5a773.js" defer></script><script src="/assets/js/2.a73860b4.js" defer></script><script src="/assets/js/13.da234352.js" defer></script>
+    <script src="/assets/js/app.375ab1b6.js" defer></script><script src="/assets/js/2.ce4fbfed.js" defer></script><script src="/assets/js/13.8b94ae31.js" defer></script>
   </body>
 </html>

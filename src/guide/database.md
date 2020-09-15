@@ -9,7 +9,7 @@ mysqldump -u dev1234 -p chantemelse > seed.sql
 
 Cela va vous créer un fichier `seed.sql` dans le répertoire où vous vous trouver (Figure 1)
 
-![Sauvegarde de la base de données locale](src/guide/images/database_save.jpg)
+![Sauvegarde de la base de données locale](./images/database_save.jpg)
 *Figure 1 : Sauvegarde de la base de données locale*
 
 Envoyez ce fichier sur votre serveur, dans le dossier de l'utilisateur `~/` avec FileZilla ou SCP.
@@ -40,10 +40,10 @@ Remove test database and access to it? Yes
 Reload privilege table now? Yes
 ```
 
-![Série de questions](src/guide/images/database_secure_mysql_1.jpg)
+![Série de questions](./images/database_secure_mysql_1.jpg)
 *Figure 2 : Série de questions*
 
-![Série de questions](src/guide/images/database_secure_mysql_2.jpg)
+![Série de questions](./images/database_secure_mysql_2.jpg)
 *Figure 3 : Série de questions*
 
 ## Configuration de MySQL Server
@@ -65,7 +65,7 @@ CREATE USER 'dev1234'@'localhost' IDENTIFIED BY 'pass1234';
 
 Accordez toutes les permissions sur la base de données à votre utilisateur (Figure 4)
 ``` sql
-GRANT ALL PRIVILEGES ON chantemelse.* TO 'dev1234'@'localhost' IDENTIFIED BY 'pass1234';
+GRANT ALL PRIVILEGES ON chantemelse.* TO 'dev1234'@'localhost';
 ```
 
 ![Création d'un utilisateur](./images/database_config_mysql.jpg)
