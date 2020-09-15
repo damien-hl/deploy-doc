@@ -66,7 +66,7 @@ apachectl configtest
 
 Désactivez le site par défaut et activez votre projet
 ``` bash
-a2disite 000-default.conf
+a2dissite 000-default.conf
 a2ensite 001-chantemelse.conf
 ``` 
 
