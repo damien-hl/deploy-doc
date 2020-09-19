@@ -56,7 +56,7 @@ Modifiez-le comme ceci (Figure 1)
 </VirtualHost>
 ``` 
 
-![Configuration du virtual host du projet](./images/virtual_host.jpg)
+![Configuration du virtual host du projet](./images/web_server_part_two_virtual_host.jpg)
 *Figure 1 : Configuration du virtual host du projet*
 
 Sauvegardez et testez cette configuration, s'il y a des erreurs de syntaxe, celles-ci seront indiquées
@@ -66,7 +66,7 @@ apachectl configtest
 
 Désactivez le site par défaut et activez votre projet
 ``` bash
-a2disite 000-default.conf
+a2dissite 000-default.conf
 a2ensite 001-chantemelse.conf
 ``` 
 
@@ -90,7 +90,7 @@ RewriteRule ^ - [L]
 RewriteRule ^ /index.html
 ``` 
 
-![Fichier .htaccess](./images/virtual_host.jpg)
+![Fichier .htaccess](./images/web_server_part_two_htaccess.jpg)
 *Figure 2 : Fichier .htaccess*
 
 Ouvrez votre navigateur et entrez l'adresse IP du serveur, le site devrait s'afficher.

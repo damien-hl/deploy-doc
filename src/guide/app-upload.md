@@ -19,14 +19,14 @@ cd ./chantemelse
 mkdir front back
 ```
 
-![Contenu du dossier Web](./images/www-dir.jpg)
+![Contenu du dossier Web](./images/app_upload_www_dir.jpg)
 *Figure 1 : Contenu du dossier Web*
 
 ## Compilation du projet Angular
 
 Sur votre PC, ouvrez un terminal et rendez-vous dans votre dossier de projet Angular (Figure 2)
 
-![Dossier du projet Angular](./images/angular_dir.jpg)
+![Dossier du projet Angular](./images/app_upload_angular_dir.jpg)
 *Figure 2 : Dossier du projet Angular*
 
 Avant de lancer le build, veillez à bien avoir modifié l'URL de votre API dans le fichier `src/environments/environment.prod.ts`
@@ -44,7 +44,7 @@ ng build --prod
 
 Par défaut Angular va compiler votre projet dans `/dist/chantemelse/` (Figure 3)
 
-![Contenu du projet compilé](./images/angular_dist.jpg)
+![Contenu du projet compilé](./images/app_upload_angular_dist.jpg)
 *Figure 3 : Contenu du projet compilé*
 
 Ce sont ces fichiers que vous allez envoyer sur votre serveur
@@ -53,7 +53,7 @@ Ce sont ces fichiers que vous allez envoyer sur votre serveur
 
 Sur votre PC, ouvrez un terminal et rendez-vous dans votre dossier de projet Spring Boot (Figure 4)
 
-![Dossier du projet Spring Boot](./images/spring_boot_dir.jpg)
+![Dossier du projet Spring Boot](./images/app_upload_spring_boot_dir.jpg)
 *Figure 4 : Dossier du projet Spring Boot*
 
 Redéfinissez, si besoin, la configuration de l'application pour la production, notamment dans le fichier `application.properties` situé dans `src/main/resources`.
@@ -84,12 +84,12 @@ Compilez votre projet pour la production avec la commande
 
 Si tout se passe bien, vous devriez voir à la fin `BUILD SUCCESS` (Figure 5)
 
-![Compilation du projet Spring Boot](./images/spring_boot_build_success.jpg)
+![Compilation du projet Spring Boot](./images/app_upload_spring_boot_build_success.jpg)
 *Figure 5 : Compilation du projet Spring Boot*
 
 La compilation devrait avoir généré plusieurs fichiers, seul un vous intéresse, il se trouve dans le dossier target et se nomme `chantemelse-0.0.1-SNAPSHOT.jar` (Figure 6)
 
-![Contenu du projet compilé](./images/spring_boot_dist.jpg)
+![Contenu du projet compilé](./images/app_upload_spring_boot_dist.jpg)
 *Figure 6 : Contenu du projet compilé, le fichier qui nous intéresse ici est `chantemelse-0.0.1-SNAPSHOT.jar`*
 
 ## Envoi des fichiers
@@ -102,13 +102,13 @@ Commencez par vous connecter à votre serveur, pour cela dans FileZilla, allez d
 
 Entrez les identifiants de connexion au serveur, si vous vous connectez au serveur par mot de passe, choisissez `Logon Type > Normal` (Figure 7)
 
-![Connexion par mot de passe](./images/filezilla_password.jpg)
+![Connexion par mot de passe](./images/app_upload_filezilla_password.jpg)
 *Figure 7 : Connexion par mot de passe*
 
 En revanche, si vous vous connectez au serveur avec votre clé SSH, choisissez `Logon Type > Key file` et choisissez votre clé privée `id_rsa`. (Figure 8)
 Vous aurez peut-être besoin de passer le filtres des extensions à `All files` pour voir le fichier.
 
-![Connexion par SSH](./images/filezilla_ssh_key.jpg)
+![Connexion par SSH](./images/app_upload_filezilla_ssh_key.jpg)
 *Figure 8 : Connexion par SSH*
 
 Si tout se passe bien, FileZilla vous demandera si vous souhaitez ajouter la clé du serveur à la liste des hôtes connus, cliquez sur `yes`.
@@ -119,12 +119,12 @@ Sur l'arborescence du serveur, naviguez jusqu'au dossier qui contiendra votre pr
 
 Glissez-déposez les fichiers du build dans le dossier `front` de votre serveur (Figure 9)
 
-![À gauche, votre disque local, à droite celle du serveur](./images/filezilla_local_remote_upload_front.jpg)
+![À gauche, votre disque local, à droite celle du serveur](./images/app_upload_filezilla_local_remote_upload_front.jpg)
 *Figure 9 : À gauche, votre disque local, à droite celle du serveur*
 
 Assurez-vous que les transferts se sont bien effectués (Figure 10)
 
-![Tous les fichiers sont bien transférés](./images/filezilla_succesful_upload_front.jpg)
+![Tous les fichiers sont bien transférés](./images/app_upload_filezilla_succesful_upload_front.jpg)
 *Figure 10 : Tous les fichiers sont bien transférés*
 
 Répétez la même opération pour le fichier .jar du back.
@@ -133,7 +133,7 @@ Sur l'arborescence du serveur, naviguez jusqu'au dossier qui contiendra votre pr
 
 Glissez-déposez le fichier jar dans le dossier `back` de votre serveur (Figure 11)
 
-![Glissez le fichier vers sa destination](./images/filezilla_local_remote_upload_back.jpg)
+![Glissez le fichier vers sa destination](./images/app_upload_filezilla_local_remote_upload_back.jpg)
 *Figure 11 : Glissez le fichier vers sa destination*
 
 ### Avec SCP - en ligne de commande
@@ -148,7 +148,7 @@ Pour copier le contenu du dossier du front (Figure 12)
 scp -P 1337 -r  ubuntu@195.154.0.1:~/www/chantemelse/back
 ``` 
 
-![Copie SSH du projet front](./images/scp_local_remote_upload_front.jpg)
+![Copie SSH du projet front](./images/app_upload_scp_local_remote_upload_front.jpg)
 *Figure 12 : Copie SSH du projet front*
 
 <Alert message="Notez ici l'utilisation du drapeau <code>-R</code> pour récursive et de <code>/*</code> après le nom du dossier projet en local pour indiquer de copier l'ensemble des fichiers du dossier et de ses sous-dossiers."/>
@@ -160,14 +160,14 @@ Pour copier le contenu du dossier du front (Figure 13)
 scp -P 1337 ./chantemelse-0.0.1-SNAPSHOT.jar <nom_d_utilisateur>@<IP_du_serveur>:<dossier_du_projet_back_remote>
 ``` 
 
-![Copie SSH du projet back](./images/scp_local_remote_upload_back.jpg)
+![Copie SSH du projet back](./images/app_upload_scp_local_remote_upload_back.jpg)
 *Figure 13 : Copie SSH du projet back*
 
 ## Vérification des fichiers uploadés
 
 Connectez-vous maintenant en SSH au serveur et vérifiez que vos fichiers ont bien été envoyés dans les dossiers `front` et `back` (Figure 14)
 
-![Vérification des fichiers](./images/upload-check.jpg)
+![Vérification des fichiers](./images/app_upload_check.jpg)
 *Figure 14 : Vérification des fichiers*
 
 Vous pouvez lancer le projet back pour voir s'il se lance (Figure 15)
@@ -175,12 +175,12 @@ Vous pouvez lancer le projet back pour voir s'il se lance (Figure 15)
 java -jar ~/www/chantemelse/back/chantemelse-0.0.1-SNAPSHOT.jar
 ``` 
 
-![Lancement du projet back sur le serveur](./images/launch_java.jpg)
+![Lancement du projet back sur le serveur](./images/app_upload_launch_java.jpg)
 *Figure 15 : Lancement du projet back sur le serveur*
 
 Sur votre navigateur, essayez d'accéder au serveur sur le port du back (ici 8081) soit `http://195.154.0.1:8081` (Figure 16)
 
-![Page d'erreur de Spring Boot](./images/index_back.jpg)
+![Page d'erreur de Spring Boot](./images/app_upload_index_back.jpg)
 *Figure 16 : Page d'erreur de Spring Boot*
 
 Arrêtez-le ensuite avec `CTRL + C`. Dans le prochain chapitre, vous allez créer un service pour le lancer automatiquement.

@@ -10,7 +10,7 @@
     <meta name="theme-color" content="#CC444B">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="preload" href="/assets/css/0.styles.95b730f6.css" as="style"><link rel="preload" href="/assets/js/app.d61deb21.js" as="script"><link rel="preload" href="/assets/js/2.138b575c.js" as="script"><link rel="preload" href="/assets/js/13.3808b438.js" as="script"><link rel="prefetch" href="/assets/js/10.b8eff6f1.js"><link rel="prefetch" href="/assets/js/11.671722f8.js"><link rel="prefetch" href="/assets/js/12.3f3f5cdc.js"><link rel="prefetch" href="/assets/js/14.edcbc31b.js"><link rel="prefetch" href="/assets/js/15.d749a2d9.js"><link rel="prefetch" href="/assets/js/16.b4b7125e.js"><link rel="prefetch" href="/assets/js/3.1e793882.js"><link rel="prefetch" href="/assets/js/4.76fbd84c.js"><link rel="prefetch" href="/assets/js/5.59c3e65a.js"><link rel="prefetch" href="/assets/js/6.5a7c12bd.js"><link rel="prefetch" href="/assets/js/7.46ed2f30.js"><link rel="prefetch" href="/assets/js/8.51c91ca4.js"><link rel="prefetch" href="/assets/js/9.897fba2c.js">
+    <link rel="preload" href="/assets/css/0.styles.95b730f6.css" as="style"><link rel="preload" href="/assets/js/app.375ab1b6.js" as="script"><link rel="preload" href="/assets/js/2.ce4fbfed.js" as="script"><link rel="preload" href="/assets/js/13.8b94ae31.js" as="script"><link rel="prefetch" href="/assets/js/10.ea518915.js"><link rel="prefetch" href="/assets/js/11.04deddfd.js"><link rel="prefetch" href="/assets/js/12.7249f203.js"><link rel="prefetch" href="/assets/js/14.8ab795d4.js"><link rel="prefetch" href="/assets/js/15.ea655d8a.js"><link rel="prefetch" href="/assets/js/16.7d9a6ace.js"><link rel="prefetch" href="/assets/js/3.6d42b066.js"><link rel="prefetch" href="/assets/js/4.19d58556.js"><link rel="prefetch" href="/assets/js/5.d82cdf12.js"><link rel="prefetch" href="/assets/js/6.44188ca4.js"><link rel="prefetch" href="/assets/js/7.f3bee485.js"><link rel="prefetch" href="/assets/js/8.99a8d366.js"><link rel="prefetch" href="/assets/js/9.a04fbd1a.js">
     <link rel="stylesheet" href="/assets/css/0.styles.95b730f6.css">
   </head>
   <body>
@@ -44,8 +44,8 @@
         ErrorLog ${APACHE_LOG_DIR}/error.log
         CustomLog ${APACHE_LOG_DIR}/access.log combined
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>VirtualHost</span><span class="token punctuation">&gt;</span></span>
-</code></pre></div><p><img src="/assets/img/virtual_host.87258718.jpg" alt="Configuration du virtual host du projet"> <em>Figure 1 : Configuration du virtual host du projet</em></p> <p>Sauvegardez et testez cette configuration, s'il y a des erreurs de syntaxe, celles-ci seront indiquées</p> <div class="language-bash extra-class"><pre class="language-bash"><code>apachectl configtest
-</code></pre></div><p>Désactivez le site par défaut et activez votre projet</p> <div class="language-bash extra-class"><pre class="language-bash"><code>a2disite 000-default.conf
+</code></pre></div><p><img src="/assets/img/web_server_part_two_virtual_host.87258718.jpg" alt="Configuration du virtual host du projet"> <em>Figure 1 : Configuration du virtual host du projet</em></p> <p>Sauvegardez et testez cette configuration, s'il y a des erreurs de syntaxe, celles-ci seront indiquées</p> <div class="language-bash extra-class"><pre class="language-bash"><code>apachectl configtest
+</code></pre></div><p>Désactivez le site par défaut et activez votre projet</p> <div class="language-bash extra-class"><pre class="language-bash"><code>a2dissite 000-default.conf
 a2ensite 001-chantemelse.conf
 </code></pre></div><p>Rechargez maintenant le service Apache</p> <div class="language-bash extra-class"><pre class="language-bash"><code>systemctl reload apache2
 </code></pre></div><p>Le projet front étant une application SPA <code>Single Page Application</code>, il peut être nécessaire de faire appel à la réécriture d'URL d'Apache via un fichier <code>.htaccess</code> pour que les routes définies dans l'application soient appelées correctement.
@@ -55,7 +55,7 @@ RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
 RewriteRule ^ - [L]
 
 RewriteRule ^ /index.html
-</code></pre></div><p><img src="/assets/img/virtual_host.87258718.jpg" alt="Fichier .htaccess"> <em>Figure 2 : Fichier .htaccess</em></p> <p>Ouvrez votre navigateur et entrez l'adresse IP du serveur, le site devrait s'afficher.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre></div><p><img src="/assets/img/web_server_part_two_htaccess.0c58e846.jpg" alt="Fichier .htaccess"> <em>Figure 2 : Fichier .htaccess</em></p> <p>Ouvrez votre navigateur et entrez l'adresse IP du serveur, le site devrait s'afficher.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
       ←
       <a href="/guide/app-upload.html" class="prev">
         Upload de l'application
@@ -64,6 +64,6 @@ RewriteRule ^ /index.html
       </a>
       →
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.d61deb21.js" defer></script><script src="/assets/js/2.138b575c.js" defer></script><script src="/assets/js/13.3808b438.js" defer></script>
+    <script src="/assets/js/app.375ab1b6.js" defer></script><script src="/assets/js/2.ce4fbfed.js" defer></script><script src="/assets/js/13.8b94ae31.js" defer></script>
   </body>
 </html>

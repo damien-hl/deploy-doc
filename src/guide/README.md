@@ -18,6 +18,6 @@ mot de passe: password
 nom du projet: chantemelse
 adresse IP: 195.154.0.1
 utilisateur base de données: dev1234
-utilisateur base de données: pass1234
+mot de passe base de données: pass1234
 nom base de données: chantemelse
 ```

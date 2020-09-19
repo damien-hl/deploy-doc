@@ -34,7 +34,7 @@ RestartSec=5
 WantedBy=multi-user.target
 ```
 
-![Contenu du service](src/guide/images/java_service.jpg)
+![Contenu du service](./images/java_part_two_service.jpg)
 *Figure 1 : Contenu du service*
 
 Rechargez les services :
@@ -57,7 +57,7 @@ Et vérifiez son statut (Figure 2) :
 systemctl status chantemelse.service
 ``` 
 
-![Statut du service](./images/java_service_status.jpg)
+![Statut du service](./images/java_part_two_service_status.jpg)
 *Figure 2 : Statut du service*
 
 Le back-end devrait maintenant fonctionner !

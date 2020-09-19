@@ -8,7 +8,7 @@ ssh ubuntu@195.154.0.1 -p 22
 ```
 Entrez `yes` pour indiquer que vous souhaitez continuer la connexion (Figure 1).
 
-![Connexion au serveur via SSH](./images/connect.jpg)
+![Connexion au serveur via SSH](./images/first_steps_connect.jpg)
 *Figure 1 : Connexion au serveur via SSH*
 
 Passez en super utilisateur root (vous devrez entrer votre mot de passe) (Figure 2)
@@ -16,7 +16,7 @@ Passez en super utilisateur root (vous devrez entrer votre mot de passe) (Figure
 sudo su
 ```
 
-![Invite de commande en tant que root](./images/root.jpg)
+![Invite de commande en tant que root](./images/first_steps_root.jpg)
 *Figure 2 : Invite de commande en tant que root*
 
 Mettez à jour les paquets du serveur

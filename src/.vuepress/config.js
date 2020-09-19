@@ -10,7 +10,9 @@ module.exports = {
 
     locales: {
         "/": {
-            lang: "fr-FR"
+            lang: "fr-FR",
+            title: 'Mise en production',
+            description: 'Guide de mise en production d\'une application Spring Boot et Angular sur un VPS'
         }
     },
 
